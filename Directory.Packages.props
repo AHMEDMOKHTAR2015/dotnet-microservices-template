@@ -3,7 +3,7 @@
     Central Package Management: every version lives here, never in a csproj (no Version="…" attributes).
     Third-party majors are pinned deliberately:
       - MassTransit stays on 8.x (Apache-2.0). MassTransit 9+ is commercially licensed.
-      - MediatR 13+ is published by Lucky Penny Software under a dual license; check the terms for your use.
+      - MediatR stays on 12.x (Apache-2.0). MediatR 13+ is commercially licensed (Lucky Penny Software).
   -->
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
@@ -40,7 +40,7 @@
     <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.12" />
     <PackageVersion Include="Microsoft.Extensions.Options.DataAnnotations" Version="10.0.12" />
     <!-- Application frameworks -->
-    <PackageVersion Include="MediatR" Version="13.1.0" />
+    <PackageVersion Include="MediatR" Version="12.5.0" />
     <PackageVersion Include="MediatR.Contracts" Version="2.0.1" />
     <PackageVersion Include="FastEndpoints" Version="7.2.0" />
     <PackageVersion Include="FastEndpoints.Swagger" Version="7.2.0" />

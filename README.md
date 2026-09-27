@@ -87,8 +87,8 @@ By hand: follow `docs/playbook/10-implementation-checklist.md` and mirror `src/S
 ## Licensing notes
 
 - The template contains code from the DotNetLabX `dotnet-microservices` course repository, **MIT**: see `LICENSE` (keep the notice).
-- **MediatR 13** (Lucky Penny Software): without a license key it logs *"This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version."* Get a key, or use the FastEndpoints variant.
-- **MassTransit** is pinned to **8.x** (Apache-2.0); 9.x is commercial.
+- **MediatR** is pinned to **12.5.0** (Apache-2.0), the last open-source release; 13.x is commercial (Lucky Penny Software). Do not accept a Dependabot/Renovate bump to 13.
+- **MassTransit** is pinned to **8.x** (Apache-2.0); 9.x is commercial. Do not accept a bump to 9.
 - A transitive pin lifts `System.Security.Cryptography.Xml` to a patched version (high-severity advisories on 10.0.0).
 
 ## Known open gaps
