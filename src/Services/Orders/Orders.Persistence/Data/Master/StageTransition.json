@@ -1,0 +1,6 @@
+[
+  { "currentStage": "Draft",     "actionType": "AddLine",      "destinationStage": "Draft" },
+  { "currentStage": "Draft",     "actionType": "SubmitOrder",  "destinationStage": "Submitted" },
+  { "currentStage": "Submitted", "actionType": "ApproveOrder", "destinationStage": "Approved" },
+  { "currentStage": "Submitted", "actionType": "RejectOrder",  "destinationStage": "Rejected" }
+]

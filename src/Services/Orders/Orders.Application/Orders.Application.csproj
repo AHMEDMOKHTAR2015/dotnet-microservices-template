@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Stateless" />
+  </ItemGroup>
+
+  <!-- Linear stack: Application -> Persistence -> Domain (concrete repositories, no repository interfaces). -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\Blocks.MediatR\Blocks.MediatR.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Blocks.Messaging\Blocks.Messaging.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Starter.Security\Starter.Security.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Starter.IntegrationEvents.Contracts\Starter.IntegrationEvents.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Modules\EmailService\EmailService.Contracts\EmailService.Contracts.csproj" />
+    <ProjectReference Include="..\Orders.Persistence\Orders.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

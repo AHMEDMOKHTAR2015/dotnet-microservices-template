@@ -1,0 +1,83 @@
+<Project>
+  <!--
+    Central Package Management: every version lives here, never in a csproj (no Version="…" attributes).
+    Third-party majors are pinned deliberately:
+      - MassTransit stays on 8.x (Apache-2.0). MassTransit 9+ is commercially licensed.
+      - MediatR 13+ is published by Lucky Penny Software under a dual license; check the terms for your use.
+  -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- gRPC (code-first) -->
+    <PackageVersion Include="protobuf-net" Version="3.4.30" />
+    <PackageVersion Include="protobuf-net.Core" Version="3.4.30" />
+    <PackageVersion Include="protobuf-net.Grpc" Version="1.3.14" />
+    <PackageVersion Include="protobuf-net.Grpc.AspNetCore" Version="1.3.14" />
+    <PackageVersion Include="System.ServiceModel.Primitives" Version="10.0.652802" />
+    <!-- security pin: System.ServiceModel.Primitives brings System.Security.Cryptography.Xml 10.0.0 (known high-severity CVEs);
+         CentralPackageTransitivePinningEnabled lifts the transitive reference to this patched version -->
+    <PackageVersion Include="System.Security.Cryptography.Xml" Version="10.0.12" />
+    <PackageVersion Include="Grpc.Net.Client" Version="2.84.0" />
+    <PackageVersion Include="Grpc.AspNetCore" Version="2.84.0" />
+    <!-- AspNetCore -->
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.12" />
+    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.23.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+    <PackageVersion Include="Yarp.ReverseProxy" Version="2.3.0" />
+    <!-- Microsoft Extensions -->
+    <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.Http" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.Options.DataAnnotations" Version="10.0.12" />
+    <!-- Application frameworks -->
+    <PackageVersion Include="MediatR" Version="13.1.0" />
+    <PackageVersion Include="MediatR.Contracts" Version="2.0.1" />
+    <PackageVersion Include="FastEndpoints" Version="7.2.0" />
+    <PackageVersion Include="FastEndpoints.Swagger" Version="7.2.0" />
+    <PackageVersion Include="FastEndpoints.Messaging.Core" Version="7.2.0" />
+    <PackageVersion Include="Carter" Version="10.0.0" />
+    <PackageVersion Include="FluentValidation" Version="12.1.1" />
+    <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+    <PackageVersion Include="Mapster" Version="7.4.0" />
+    <PackageVersion Include="Stateless" Version="5.20.1" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageVersion Include="Humanizer.Core" Version="2.14.1" />
+    <PackageVersion Include="Flurl.Http" Version="4.0.2" />
+    <!-- Messaging -->
+    <PackageVersion Include="MassTransit.RabbitMQ" Version="8.5.10" />
+    <!-- Data stores -->
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.12" />
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
+    <PackageVersion Include="EFCore.NamingConventions" Version="10.0.1" />
+    <PackageVersion Include="Redis.OM" Version="1.3.0" />
+    <PackageVersion Include="StackExchange.Redis" Version="2.13.17" />
+    <PackageVersion Include="MongoDB.Driver" Version="3.12.0" />
+    <PackageVersion Include="Azure.Storage.Blobs" Version="12.29.2" />
+    <PackageVersion Include="Refit" Version="8.0.0" />
+    <PackageVersion Include="Refit.HttpClientFactory" Version="8.0.0" />
+    <PackageVersion Include="Refit.Newtonsoft.Json" Version="8.0.0" />
+    <PackageVersion Include="GraphQL.Client" Version="6.1.0" />
+    <PackageVersion Include="GraphQL.Client.Serializer.SystemTextJson" Version="6.1.0" />
+    <!-- Email providers -->
+    <PackageVersion Include="MailKit" Version="4.18.0" />
+    <PackageVersion Include="SendGrid" Version="9.29.3" />
+    <!-- Tests -->
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.10.1" />
+    <PackageVersion Include="xunit" Version="2.9.3" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="4.0.0" />
+  </ItemGroup>
+</Project>

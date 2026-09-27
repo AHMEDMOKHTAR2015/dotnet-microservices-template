@@ -1,0 +1,6 @@
+[
+  { "id": 101, "name": "Draft",     "description": "The customer created the order" },
+  { "id": 102, "name": "Submitted", "description": "Submitted for approval" },
+  { "id": 103, "name": "Approved",  "description": "Approved by an order manager" },
+  { "id": 104, "name": "Rejected",  "description": "Rejected by an order manager" }
+]

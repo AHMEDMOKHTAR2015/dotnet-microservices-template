@@ -1,0 +1,11 @@
+global using Xunit;
+global using Blocks.Domain;
+global using Starter.Abstractions;
+global using Starter.Abstractions.Enums;
+global using Starter.Abstractions.Events;
+global using Orders.Domain.Orders;
+global using Orders.Domain.Orders.Events;
+global using Orders.Domain.Shared;
+global using Orders.Domain.Shared.Enums;
+global using Orders.Domain.Shared.ValueObjects;
+global using Orders.Domain.StateMachines;

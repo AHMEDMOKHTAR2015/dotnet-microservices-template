@@ -1,0 +1,73 @@
+# Services + infrastructure. Ports and environment live in docker-compose.override.yml.
+#   docker compose up -d sqlserver rabbitmq        # infrastructure only (run the services from your IDE)
+#   docker compose up -d --build                   # everything
+#   docker compose --profile optional up -d        # + stores used by the optional building blocks/modules
+services:
+  orders-api:
+    image: ${DOCKER_REGISTRY-}starter-orders-api
+    build:
+      context: .
+      dockerfile: src/Services/Orders/Orders.API/Dockerfile
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+
+  api-gateway:
+    image: ${DOCKER_REGISTRY-}starter-api-gateway
+    build:
+      context: .
+      dockerfile: src/ApiGateway/Dockerfile
+    depends_on:
+      - orders-api
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$${MSSQL_SA_PASSWORD}\" -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+  rabbitmq:
+    image: rabbitmq:management
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  # ---- optional: enable with --profile optional when a service needs them ----
+  mongo:                     # FileStorage.MongoGridFS
+    image: mongo:7
+    profiles: ["optional"]
+    volumes:
+      - mongo_data:/data/db
+
+  redis:                     # Blocks.Redis (Redis.OM needs Redis Stack)
+    image: redis/redis-stack
+    profiles: ["optional"]
+
+  postgres:                  # read models (Npgsql + Blocks.Hasura)
+    image: postgres:17
+    profiles: ["optional"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  hasura:                    # Blocks.Hasura GraphQL read API over postgres
+    image: hasura/graphql-engine
+    profiles: ["optional"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  sqlserver_data:
+  rabbitmq_data:
+  mongo_data:
+  postgres_data:

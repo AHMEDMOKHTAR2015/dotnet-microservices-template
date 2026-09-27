@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <!-- Application is referenced only for the real OrderStateMachine; no database, no mocks needed. -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Services\Orders\Orders.Application\Orders.Application.csproj" />
+  </ItemGroup>
+
+  <!-- the SAME transition table the service seeds, so tests fail if the lifecycle data changes unexpectedly -->
+  <ItemGroup>
+    <None Include="..\..\src\Services\Orders\Orders.Persistence\Data\Master\StageTransition.json" Link="Data\StageTransition.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

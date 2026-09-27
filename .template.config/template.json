@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Based on the DotNetLabX dotnet-microservices reference (MIT)",
+  "classifications": [
+    "Web",
+    "Microservices",
+    "DDD",
+    "Clean Architecture",
+    "Vertical Slice"
+  ],
+  "identity": "DddVerticalSlice.Microservices.Template",
+  "name": "DDD Vertical Slice Microservices",
+  "description": "Microservices solution: BuildingBlocks, pluggable modules, sample Orders service, YARP gateway, docker-compose, dev token tool, domain tests, Claude Code agents and the architecture playbook.",
+  "shortName": "ddd-microservices",
+  "sourceName": "Starter",
+  "preferNameDirectory": true,
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [
+            ".template.config/**",
+            "**/bin/**",
+            "**/obj/**",
+            "**/.vs/**",
+            "**/.DS_Store",
+            "**/*.user"
+          ]
+        }
+      ]
+    }
+  ]
+}
